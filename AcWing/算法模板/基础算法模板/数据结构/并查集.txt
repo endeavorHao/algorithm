@@ -1,0 +1,51 @@
+(1) 朴素并查集
+int p[N];
+
+int find(int x){
+    if(x != p[x]) p[x] = find(p[x]);
+    return p[x];
+}
+
+// 初始化
+for(int i = 1; i <= n; i ++ ) p[i] = i;
+
+// 合并a和b的集合
+p[find(a)] = find(b);
+
+(2) 维护size的并查集
+int p[N], sz[N];  // sz[]表示该集合中点的数量
+
+int find(int x){
+    if(x != p[x]) p[x] = find(p[x]);
+    return p[x];
+}
+
+// 初始化
+for(int i = 1; i <= n; i ++ ){
+    p[i] = i;
+    sz[i] = 1;
+}
+
+// 合并a和b的集合
+int pa = find(a), pb = find(b);
+if(pa != pb){
+    sz[pb] += sz[pa];
+    p[pa] = pb;
+}
+
+(3) 维护到根节点的距离
+int p[N], d[N];  // d[]存储的是x到p[x]的距离
+
+int find(int x){
+    if(x != p[x]){
+        int u = find(p[x]);
+        d[x] += d[p[x]];
+        p[x] = u;
+    }
+    return p[x];
+}
+
+// 合并a和b的集合
+int a = find(a), b = find(b);
+p[a] = b;
+d[a] = distance;
