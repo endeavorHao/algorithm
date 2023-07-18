@@ -5,10 +5,16 @@
 using namespace std;
 const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
-int n, m;
+int n, m, k;
 int a[N];
+int gcd(int a, int b){
+    return b ? gcd(b, a % b) : a;
+}
 void solve(){
-	
+	cin >> n >> m >> k;
+    int t = gcd(n, m);
+    int ans = k / t - 2;
+    cout << ans << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -25,3 +31,5 @@ signed main() {
 	}
 	return 0;
 }
+
+

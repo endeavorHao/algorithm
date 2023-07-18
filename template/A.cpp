@@ -5,10 +5,10 @@
 using namespace std;
 const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
-int n, m, k;
-int dist[N];
-int ans;
+int n, m;
+int a[N];
 void solve(){
+	
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -19,7 +19,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	//cin >> T;
+	// cin >> T;
 	while(T -- ){
 		solve();
 	}
