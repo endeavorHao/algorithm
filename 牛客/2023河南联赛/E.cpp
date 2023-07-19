@@ -3,15 +3,24 @@
 #define y second
 #define int long long
 using namespace std;
-const int N = 200010, INF = 0x3f3f3f3f;
+const int N = 1000010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
-int a[N];
-char str[N];
-int s[N];
+int a[N], x[N];
+int b[N];
 void solve(){
-	cin >> n >> m;
-	cin >> str + 1;
+	cin >> n;
+	for(int i = 1; i <= n; i ++ ) cin >> x[i];
+	for(int i = 1; i <= n; i ++ ){
+		b[max(1ll, i - x[i])] ++, b[i] --;
+		b[i + 1] ++, b[min(n + 1, i + x[i] + 1)] --;
+	}
+	int ans = 0;
+	for(int i = 1; i <= n; i ++ ){
+		b[i] += b[i-1];
+		if(b[i]) ans ++;
+	}
+	cout << ans << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE

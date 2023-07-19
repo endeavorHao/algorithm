@@ -7,27 +7,26 @@ const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
 int a[N];
-int cnt[31];
-int sum;
+bool check(int mid){
+	int sum = 0;
+	for(int i = 1; i <= n; i ++ ){
+		if(a[i] >= mid) sum += (a[i] - mid) * 2;
+		if(sum >= m) return true;
+	}
+	return false;
+}
 void solve(){
-	cin >> n;
-    int t = 0;
-    for(int i = 0; i < 31; i ++ ){
-        t = (1 << i);
-        if(t >= n + 1){ t = i; break;} 
-    }
-    int maxv = 0;
-    for(int i = 0; i < 31; i ++ ){
-        if(n >> i & 1) cnt[i] ++, sum ++, maxv = i;
-    }
-   maxv = (1 << maxv);
-   sum --;
-   for(int i = 0; i < 31; i ++ ){
-        if(sum == 0) break;
-        sum --;
-        maxv += (1 << i);
-   } 
-   cout << n - maxv << endl;
+	cin >> n >> m;
+	for(int i = 1; i <= n; i ++ ) cin >> a[i];
+	int l = 0, r = 1e9;
+	while(l < r){
+		int mid = l + r + 1 >> 1;
+		if(check(mid)) l = mid;
+		else r = mid - 1;
+	}
+	if(check(r)) cout << r << endl;
+	else 
+		cout << -1 << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
