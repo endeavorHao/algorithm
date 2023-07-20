@@ -3,11 +3,11 @@
 #define y second
 #define int long long
 using namespace std;
-const int N = 200010, INF = 0x3f3f3f3f;
+const int N = 1000010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, hp;
 int son[N][2];
-int ret[N], idx;
+int ret[N * 32], idx;
 void insert(int x, int t){
 	int p = 0;
 	for(int i = 31; i >= 0; i -- ){

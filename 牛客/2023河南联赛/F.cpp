@@ -43,7 +43,6 @@ void solve(){
         int op, x, h;
         cin >> op >> x;
         if(op == 1) insert(x);
-        else if(op == 2) insert()
     }
 }
 signed main() {

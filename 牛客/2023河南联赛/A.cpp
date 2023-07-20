@@ -25,10 +25,10 @@ void solve(){
 		int ans = 0;
 		int x;
 		cin >> x;
-		if(maxv[x] == 0) ans = sum[x] - sum[0];
-		else if(x - maxv[x] >= k && h[maxv[x]] == h[x]) 
+        if(s[x] >= k) 
 			ans = sum[x] - sum[x - k];
-		else {
+		else if(maxv[x] == 0) ans = sum[x] - sum[0];
+		else{
 			ans = sum[x] - sum[maxv[x] - k];
 		}
 		cout << ans << endl;

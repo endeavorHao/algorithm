@@ -11,12 +11,16 @@ void solve(){
 	cin >> n >> c;
     vector<int> a(n + 1);
     vector<int> dp(n + 1);
+    vector<int> q(n + 1);
 	for(int i = 1; i <= n; i ++ ) cin >> a[i];
+    int hh = 0, tt = -1;
 	for(int i = 1; i <= n; i ++ ){
-		dp[i] = dp[i - 1];
-		S.insert({a[i], i});
-		if(i > c) S.erase({a[i - c], i - c});
-		if(i >= c) dp[i] = max(dp[i], dp[i - c] + S.begin()->first);
+		dp[i] = dp[i-1];
+        if(hh <= tt && q[hh] <= i - c) hh ++;
+        while(hh <= tt && a[q[tt]] >= a[i]) tt --;
+        q[ ++ tt] = i;
+        if(i >= c)
+            dp[i] = max(dp[i], dp[i-c] + a[q[hh]]);
 	}
 	cout << dp[n] << endl;
 }
