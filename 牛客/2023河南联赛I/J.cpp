@@ -6,11 +6,21 @@ using namespace std;
 const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
+int a[N];
 void solve(){
-    int a, b, c;
-	cin >> a >> b >> c;
-    if(a + b >= 10 || a + c >= 10 || b + c >= 10) cout << "YES" << endl;
-    else cout << "NO" << endl;
+    cin >> n;
+    for(int i = 0; i < n; i ++ ) cin >> a[i];
+    sort(a, a + n);
+    int sum1 = 0, sum2 = 0;
+    for(int i = 0; i < n; i ++ ){
+        sum1 += a[i];
+    }
+    sum2 = sum1 - a[n - 1];
+    sum1 = sum1 - a[0];
+    n --;
+    double l = (double) sum2 / n;
+    double r = (double) sum1 / n;
+    printf("%.6lf %.6lf\n", l, r);
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -21,7 +31,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	cin >> T;
+	// cin >> T;
 	while(T -- ){
 		solve();
 	}

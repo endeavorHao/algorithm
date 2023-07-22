@@ -6,25 +6,19 @@ using namespace std;
 const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
-int a[N];
-int f[N], g[N];
+int a[N], pos[N];
 void solve(){
 	cin >> n;
     for(int i = 1; i <= n; i ++ ) cin >> a[i];
-    memset(f, 0, sizeof f);
-    memset(g, 0, sizeof g);
-    for(int i = 1; i <= n; i ++ ){
-        f[i] = 1;
-        g[i] = 1;
-        for(int j = 1; j <= i; j ++ ){
-            if(a[i] < a[j]) f[i] = max(f[i], f[j] + 1);
-            if(a[i] > a[j]) g[i] = max(g[i], g[j] + 1);
-        }
-    }
+    for(int i = 1; i <= n; i ++ ) pos[a[i]] = i;
     int ans = 0;
     for(int i = 1; i <= n; i ++ ){
-        ans = max(ans, f[i]);
-        ans = max(ans, g[i]);
+        if(a[i] != i){
+            int temp = pos[i];
+            pos[a[i]] = temp;
+            swap(a[i], a[temp]);
+            ans ++;
+        }
     }
     cout << ans << endl;
 }
@@ -37,7 +31,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	cin >> T;
+	// cin >> T;
 	while(T -- ){
 		solve();
 	}
