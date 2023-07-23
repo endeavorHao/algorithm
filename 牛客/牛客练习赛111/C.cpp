@@ -8,12 +8,11 @@ typedef pair<int, int> PII;
 int n, m;
 int a[N];
 void solve(){
-	cin >> n;
-	int ans;
-	if(n % 3)
-		ans = n / 3 * 2;
-	else ans = n / 3 - 1;
-	cout << ans << endl;
+	int x, m;
+	cin >> m >> x;
+	int k = m / x;
+	int a = m / k, b = m / (k + 1);
+	cout << a - b << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -24,7 +23,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	// cin >> T;
+	cin >> T;
 	while(T -- ){
 		solve();
 	}

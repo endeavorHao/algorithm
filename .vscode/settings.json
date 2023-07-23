@@ -100,7 +100,16 @@
         "cwctype": "cpp",
         "memory_resource": "cpp",
         "optional": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stacktrace": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp",
+        "bitset": "cpp",
+        "complex": "cpp"
     },
     "editor.fontSize": 16,
     
