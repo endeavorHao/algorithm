@@ -6,39 +6,40 @@ using namespace std;
 const int N = 2010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
-char g[N][N];
+int g[N][N];
 int dist[N][N];
-int dx[4] = {1, 0, -1, 0}, dy[4] = {0, 1, 0, -1};
+int dx[4] = {0, 1, 0, -1}, dy[4] = {1, 0, -1, 0};
 void solve(){
-	cin >> n >> m;
-	for(int i = 1; i <= n; i ++ ) cin >> g[i] + 1;
-
-	auto bfs = [&]() -> void{
-		memset(dist, -1, sizeof dist);
+	cin >> n;
+	for(int i = 0; i < n; i ++ )
+		for(int j = 0; j < n; j ++ ) cin >> g[i][j];
+	
+	vector<vector<PII>> path(n, vector<PII>(n, {-1, -1}));
+	auto bfs = [&](int sx, int sy){
 		queue<PII> q;
-		for(int i = 1; i <= n; i ++ )
-			for(int j = 1; j <= m; j ++ ){
-				if(g[i][j] == '1'){
-					dist[i][j] = 0;
-					q.push({i, j});
-				}
-			}
+		q.push({sx, sy});
+		path[sx][sy] = {0, 0};
 		while(q.size()){
 			auto t = q.front();
 			q.pop();
 			for(int i = 0; i < 4; i ++ ){
 				int x = t.x + dx[i], y = t.y + dy[i];
-				if(x <= 0 || x > n || y <= 0 || y > m) continue;
-				if(dist[x][y] != -1) continue;
-				dist[x][y] = dist[t.x][t.y] + 1;	
+				if(x < 0 || x >= n || y < 0 || y >= n) continue;
+				if(g[x][y] == 1) continue;
+				if(path[x][y].x != -1) continue;
 				q.push({x, y});
+				path[x][y] = t;
+				if(t.x == 0 && t.y == 0) return;
 			}
 		}
 	};
-	bfs();
-	for(int i = 1; i <= n; i ++ ){
-		for(int j = 1; j <= m; j ++ ) cout << dist[i][j] << ' ';
-		cout << endl; 
+
+	bfs(n-1, n-1);
+	PII end(0, 0);
+	while(1){
+		cout << end.x << ' ' << end.y << endl;
+		if(end.x == n - 1 && end.y == n - 1) break;
+		end = path[end.x][end.y];
 	}
 }
 signed main() {

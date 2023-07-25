@@ -3,51 +3,52 @@
 #define y second
 #define int long long
 using namespace std;
-const int N = 1000010, INF = 0x3f3f3f3f;
+const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
-int h[N], ne[N], e[N], idx;
-int d[N], ans[N];
-int tt;
-void add(int a, int b){
-	e[idx] = b, ne[idx] = h[a], h[a] = idx ++;
+int g[4][2];
+string get(string s, int k){
+	if(k == 0){
+		for(int i = 0; i < 4; i ++ ) swap(s[i], s[i + 4]);
+	}else if(k == 1){
+		char c = s[3], c2 = s[7];
+		for(int i = 3; i >= 1; i -- ){
+			s[i] = s[i - 1], s[i + 4] = s[i + 4 - 1];
+		}
+		s[0] = c, s[4] = c2;
+	}else{
+		char c = s[1];
+		s[1] = s[5], s[5] = s[6], s[6] = s[2], s[2] = c;
+	}
+	return s;
 }
-bool topsort(){
-	queue<int> q;
-	for(int i = 1; i <= n; i ++ )
-		if(d[i] == 0) q.push(i);
-	
+void bfs(string start, string end){
+	queue<string> q;
+	map<string, string> mp;
+	map<string, int> dist;
+	q.push({start});
+	dist[start] = 0;
+	mp[start] = "";
 	while(q.size()){
 		auto t = q.front();
-        q.pop();
-		ans[++ tt] = t;
-		for(int i = h[t]; ~i; i = ne[i]){
-			int j = e[i];
-			if(-- d[j] == 0) q.push(j);
+		q.pop();
+
+		for(int i = 0; i < 3; i ++ ){
+			string x = get(x, i);
+			cout << x << endl;
 		}
 	}
-	return tt == n;
 }
 void solve(){
-	cin >> n >> m;
-    memset(h, -1, sizeof h);
-	while(m -- ){
-		int a, b;
-		cin >> a >> b;
-		add(a, b);
-		d[b] ++;
+	string start = "", end = "";
+	for(int i = 0; i < 8; i ++ ){
+		int c;
+		cin >> c;
+		start += c + '0';
+		end += i + '1';
 	}
-	if(topsort()){
-		cout << 1 << endl;
-		for(int i = 1; i <= tt; i ++ ) cout << ans[i] << ' ';
-		cout << endl;
-	}else {
-		cout << 2 << endl;
-		for(int i = 1; i <= n; i ++ ) cout << i << ' ';
-		cout << endl;
-		for(int i = n; i; i -- ) cout << i << ' ';
-		cout << endl;
-	}
+	cout << start << ' ' << end;
+	bfs(start, end);
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
