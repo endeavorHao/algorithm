@@ -6,25 +6,23 @@ using namespace std;
 const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
-int a[N];
+int a[N], b[N];
 void solve(){
 	cin >> n >> m;
-	for(int i = 1; i <= n; i ++ ) cin >> a[i];
-	map<int, int> mp;
-	for(int i = 1; i <= n; i ++ ){
-		mp[a[i]] ++;
-	}
-	int ans = -1;
-	for(int i = 0; i <= m; i ++ ){
-		if(mp[i]) continue;
-		else{
-			ans = i;
-			break;
-		}
-	}
-	if(ans == -1) cout << m << endl;
-	else 
-		cout << ans << endl;
+    for(int i = 0; i < n; i ++ ) cin >> a[i] >> b[i];
+    int maxv = 0;
+    for(int i = 0; i < n; i ++ ) maxv = max(maxv, a[i]);
+    sort(b, b + n, greater<int>());
+    int ans = 0;
+    for(int i = 0; i < n; i ++ ){
+        if(m <= 0) break;
+        if(b[i] > maxv){
+            m -= b[i];
+            ans ++;
+        }else break;
+    }
+    ans += (m + maxv - 1) / maxv; 
+    cout << ans << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE

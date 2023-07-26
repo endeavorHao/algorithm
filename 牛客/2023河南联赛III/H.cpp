@@ -7,24 +7,29 @@ const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
 int a[N];
+int s[N];
+int cnt[31];
 void solve(){
-	cin >> n >> m;
+	cin >> n;
 	for(int i = 1; i <= n; i ++ ) cin >> a[i];
-	map<int, int> mp;
+	sort(a + 1, a + n + 1);
+	int maxv = 0;
+	int ans = 0;
+	bool ok = false;
 	for(int i = 1; i <= n; i ++ ){
-		mp[a[i]] ++;
-	}
-	int ans = -1;
-	for(int i = 0; i <= m; i ++ ){
-		if(mp[i]) continue;
-		else{
-			ans = i;
+		ans += a[i];
+		if(ans < a[i + 1] - 1) {
+			ans++;
+			ok = true;
 			break;
 		}
 	}
-	if(ans == -1) cout << m << endl;
-	else 
-		cout << ans << endl;
+	if(a[1] != 1) cout << 1 << endl;
+	else{
+		if(ok)
+			cout << ans << endl;
+		else cout << ans + 1 << endl;
+	}
 }
 signed main() {
 	#ifndef ONLINE_JUDGE

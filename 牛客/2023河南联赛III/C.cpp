@@ -8,23 +8,18 @@ typedef pair<int, int> PII;
 int n, m;
 int a[N];
 void solve(){
-	cin >> n >> m;
-	for(int i = 1; i <= n; i ++ ) cin >> a[i];
+	cin >> n;
 	map<int, int> mp;
 	for(int i = 1; i <= n; i ++ ){
-		mp[a[i]] ++;
-	}
-	int ans = -1;
-	for(int i = 0; i <= m; i ++ ){
-		if(mp[i]) continue;
-		else{
-			ans = i;
-			break;
+		for(int j = 1; i * j <= n; j ++ ){
+			mp[i * j] ++;
 		}
 	}
-	if(ans == -1) cout << m << endl;
-	else 
-		cout << ans << endl;
+	int ans = 0;
+	for(int i = 1; i <= n; i ++ )
+		for(int j = 1; i * j <= n; j ++ )
+		 	ans += mp[n - i * j];
+	cout << ans << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE

@@ -7,24 +7,30 @@ const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
 int a[N];
+bool pos[N];
 void solve(){
-	cin >> n >> m;
-	for(int i = 1; i <= n; i ++ ) cin >> a[i];
-	map<int, int> mp;
+	cin >> n;
+	vector<int> w;
+	for(int i = 1; i <= n; i ++ ) cin >> a[i], w.push_back(a[i]);
+	sort(w.begin(), w.end());
 	for(int i = 1; i <= n; i ++ ){
-		mp[a[i]] ++;
+		if(a[i] & 1) pos[i] = true;
+		else pos[i] = false;
 	}
-	int ans = -1;
-	for(int i = 0; i <= m; i ++ ){
-		if(mp[i]) continue;
-		else{
-			ans = i;
-			break;
+	for(int i = 0; i < w.size(); i ++){
+		if(w[i] & 1){
+			if(!pos[i + 1]){
+				cout << "NO" << endl;
+				return ;
+			}
+		}else{
+			if(pos[i + 1]){
+				cout << "NO" << endl;
+				return;
+			}
 		}
 	}
-	if(ans == -1) cout << m << endl;
-	else 
-		cout << ans << endl;
+	cout << "YES" << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -35,7 +41,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	// cin >> T;
+	cin >> T;
 	while(T -- ){
 		solve();
 	}

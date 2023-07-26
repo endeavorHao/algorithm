@@ -10,7 +10,7 @@ int n, m;
 struct Node
 {
     int l, r;
-    int sum, add;
+    int sum, add, price;
 }tr[N * 4];
 
 void pushup(int u)
@@ -86,9 +86,10 @@ signed main()
     build(1, 1, n);
     int op;
     int l, r;
+	int sum = 0;
     for(int i = 1; i <= m; i ++ ){
         cin >> op >> l >> r;
-        if(op == 1) cout << (query(1, l, r) * i % mod + mod) % mod << endl;
+        if(op == 1) cout << query(1, l, r) % mod << endl;
         else{
             int v;
             cin >> v;

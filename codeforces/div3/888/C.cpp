@@ -10,21 +10,23 @@ int a[N];
 void solve(){
 	cin >> n >> m;
 	for(int i = 1; i <= n; i ++ ) cin >> a[i];
+	int x = a[1], y = a[n];
 	map<int, int> mp;
 	for(int i = 1; i <= n; i ++ ){
-		mp[a[i]] ++;
-	}
-	int ans = -1;
-	for(int i = 0; i <= m; i ++ ){
-		if(mp[i]) continue;
-		else{
-			ans = i;
-			break;
+		if(mp[x] && mp[x] % m == 0){
+			if(mp[y] && mp[y] % m == 0){
+				cout << "YES" << endl;
+				return ;
+			}
+			if(a[i] == y) mp[y] ++;
 		}
+		else if(a[i] == x) mp[x] ++;
 	}
-	if(ans == -1) cout << m << endl;
-	else 
-		cout << ans << endl;
+	if(mp[y] && mp[y] % m == 0){
+			cout << "YES" << endl;
+			return ;
+	}
+	cout << "NO" << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -35,7 +37,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	// cin >> T;
+	cin >> T;
 	while(T -- ){
 		solve();
 	}
