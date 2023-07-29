@@ -11,8 +11,8 @@ void solve(){
 	vector<int> r(n);
 	iota(r.begin(), r.end(), 0);
 	vector<int> las(n + 1, 0), nex(n + 1, n - 1);
-	for(int i = 1; i < n - 1; i ++ ){
-		las[i] = a[i] == 0 ? i : las[i - 1];
+	for(int i = 0; i < n - 1; i ++ ){
+		las[i + 1] = a[i] == 0 ? i : las[i];
 	}
 	for(int i = n - 1; i >= 0; i -- ){
 		nex[i] = a[i] == 0 ? i : nex[i + 1];
