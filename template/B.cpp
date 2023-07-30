@@ -4,20 +4,7 @@
 #define int long long
 using namespace std;
 void solve(){
-	int n, k;
-	cin >> n >> k;
-	vector<int> ans;
-	k = n - k + 1;
-	int x = k, y = 1;
-	while(x <= n || y < k){
-		if(x <= n)
-			ans.emplace_back(x);
-		if(y < k)
-			ans.emplace_back(y);
-		x ++, y ++;
-	}
-	for(auto u: ans) cout << u << ' ';
-	cout << endl;
+	
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -28,7 +15,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	// cin >> T;
+	cin >> T;
 	while(T -- ){
 		solve();
 	}

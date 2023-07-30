@@ -4,15 +4,7 @@
 #define int long long
 using namespace std;
 void solve(){
-	string s;
-	cin >> s;
-	for(auto &u: s){
-		if(u >= 'b' && u <= 'z') u = u - 1;
-		else if(u == 'a') u = 'z';
-		else if(u >= 'A' && u <= 'Y') u = u + 1;
-		else if(u == 'Z') u = 'A';
-	}
-	cout << s << endl;
+	
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -23,7 +15,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	// cin >> T;
+	cin >> T;
 	while(T -- ){
 		solve();
 	}
