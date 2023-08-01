@@ -3,10 +3,21 @@
 #define y second
 #define int long long
 using namespace std;
-const int N = 200010, INF = 0x3f3f3f3f, mod = 1000000007;
-typedef pair<int, int> PII;
+const int mod = 20010905;
 void solve(){
-	
+	string target = "iloveyou";
+	string s;
+	cin >> s;
+	vector<int> dp(9, 0);
+	dp[0] = 1;
+	for(int i = 0; i < s.size(); i ++ ){
+		for(int j = 0; j < target.size(); j ++ ){
+			if(s[i] == target[j] || s[i] == target[j] - 32){
+				dp[j + 1] = (dp[j + 1] + dp[j]) % mod;
+			}
+		}
+	}
+	cout << dp[8] << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE

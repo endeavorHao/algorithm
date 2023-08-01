@@ -1,70 +1,39 @@
-#include<bits/stdc++.h>
-using namespace std;
-
-// #define int long long
+#include <bits/stdc++.h>
 #define x first
 #define y second
-#define endl "\n"
-#define rep(i,a,b) for(int i = int(a);i <= int(b);++i)
-#define rer(i,a,b) for(int i = int(b);i >= int(a);--i)
-#define pep(i,a,b) for(int i = int(a);i < int(b);++i)
-#define per(i,a,b) for(int i = int(b);i > int(b);--i);
-int dx[4] = {-1, 0, 1, 0}, dy[4] = {0, 1, 0, -1};
-
-typedef long long LL;
-typedef pair<int, int> PII;
-typedef pair<PII, int> PIII;
-typedef pair<PII, PII> PIIII;
-typedef pair<int, char> PIC;
-typedef pair<char, int> PCI;
-struct edge{
-  int a, b, c;
-  bool operator < (const edge &t) const{
-    return c < t.c;
-  }
-};
-
-int lowbit(int x) { return x & -x; }
-
-const int N = 6010, M = 1e7 + 10, INF = 0x3f3f3f3f, mod = 998244353;
-int n, m, k, t;
-
-int read(){
-   int s=0;
-   char ch=getchar();
-   while(ch>='0'&&ch<='9') s=s*10+ch-'0',ch=getchar();
-   return s;
-}
-
+#define int long long
+using namespace std;
+const int mod = 2333;
 void solve(){
-  n = read();
-  vector<vector<int>> g(n + 1, vector<int>(n + 1));
-  int res = 0;
-  for(int i = 1; i <= n; i++){
-    for(int j = 1; j <= n; j++){
-      int x = read();
-      g[i][j] = x;
-    }
-  }
-  int ans = 0;
-  for(int i = 1; i <= n; i ++ ){
-	bool ok = false;
-	for(int j = 1; j <= n; j ++ ){
-		if(g[j][i] == 1){
-			ok = true;
-		}
-	}
-	if(ok) ans ++;
-  }
-  cout << ans << endl;
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> g(n, vector<int>(m));
+    vector<vector<int>> f(n, vector<int>(m, 0));
+    for(int i = 0; i < n; i ++ )
+      for(int j = 0; j < m; j ++ ) cin >> g[i][j];
+    f[n-1][0] = 1;
+    for(int i = n - 1; i >= 0; i -- )
+      for(int j = 0; j < m; j ++ ){
+        if(!g[i][j]){
+          if(i + 1 < n) f[i][j] = f[i + 1][j] % mod;
+          if(j - 1 >= 0) f[i][j] = (f[i][j] + f[i][j - 1]) % mod; 
+          cout << f[i][j] << endl;
+        }
+      }
+      cout << f[0][m - 1] << endl;
 }
-
-signed main(){
-
-  int T = 1;
-  while(T--){
-    solve();
-  }
-
-  return 0;
+signed main() {
+    #ifndef ONLINE_JUDGE
+    freopen("in.txt", "r", stdin);
+    freopen("out.txt", "w", stdout);
+    #endif
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int T = 1;
+    // cin >> T;
+    while(T -- ){
+      solve();
+    }
+    return 0;
 }

@@ -16,32 +16,40 @@ void solve(){
 				if(g[i][j] != '.'){
 					col[j][g[i][j] - '1'] = row[i][g[i][j] - '1'] = st[i / 3][j / 3][g[i][j] - '1'] = true;
  				} 
- 				cout << g[i][j];
+ 				// cout << g[i][j];
 			}
-			cout << endl;
+			// cout << endl;
 		}
-		function<void(int, int)> dfs = [&](int x, int y) {
+		function<bool(int, int)> dfs = [&](int x, int y) {
 			if(y == 9) x ++, y = 0;
-			if(x == 9) return;
-			cout << x << ' ' << y << endl;
+			if(x == 9) {
+				for(int i = 0; i < 9; i ++ ){
+					for(int j = 0; j < 9; j ++ ) cout << g[i][j];
+						// cout << endl;
+					}
+				return true;
+			}
+			// cout << x << ' ' << y << endl;
+			// if(x == 0 && y == 7){
+			// 	for(int i = 0; i < 9; i++) cout << g[0][i];
+			// 	exit(0);
+			// }
 			if(g[x][y] != '.'){
-				
-				dfs(x, y + 1);
+				if(dfs(x, y + 1)) return true;
 			}
 			else{
 				for(int i = 1; i <= 9; i ++ )
 					if(!col[y][i - 1] && !row[x][i - 1] && !st[x / 3][y / 3][i - 1]){
 						col[y][i - 1] = row[x][i - 1] = st[x / 3][y / 3][i - 1] = true;
 						g[x][y] = (char)i + '0';
-						dfs(x, y + 1);
+						if(dfs(x, y + 1)) return true;
 						g[x][y] = '.';
 						col[y][i - 1] = row[x][i - 1] = st[x / 3][y / 3][i - 1] = false;
 					}
 			}
+			return false;
 		};
-		dfs( 0, 0);
-		for(int i = 0; i < 9; i ++ )
-			for(int j = 0; j < 9; j ++ ) cout << g[i][j];
+		dfs(0, 0);
 		cout << endl;
 	}
 }
