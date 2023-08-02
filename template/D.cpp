@@ -3,19 +3,46 @@
 #define y second
 #define int long long
 using namespace std;
+const int N = 200010, INF = 0x3f3f3f3f, mod = 1000000007;
+typedef pair<int, int> PII;
+int phi(int x){
+    int res = x;
+    for (int i = 2; i <= x / i; i ++ )
+        if (x % i == 0)
+        {
+            res = res / i * (i - 1);
+            while (x % i == 0) x /= i;
+        }
+    if (x > 1) res = res / x * (x - 1);
+    return res;
+}
+int qmi(int a, int b, int p){
+	int ans = 1 % p;
+	a %= p;
+	while(b){
+		if(b & 1) ans = ans * a % p;
+		b >>= 1;
+		a = a * a % p;
+	}
+	return ans;
+}
 void solve(){
-	int n;
-	cin >> n;
-	vector<vector<int>> dp(n + 1, vector<int>(4 * n));
-	dp[0][0] = 1;
-	for(int i = 1; i <= n; i ++ )
-		for(int j = 1; j <= 4 * n; j ++ )
-			for(int k = 1; k <= 4; k ++ )
-				if(j >= k) dp[i][j] += dp[i-1][j - k];
-	int ans = 0;
-	for(int j = 3 * n; j <= 4 * n; j ++ )
-		ans += dp[n][j];
-	cout << ans << '/' << pow(n, 4) << endl;
+	int n, p;
+	cin >> n >> p;
+	int u = phi(p);
+	if(p / 2 != 0){
+		int t = qmi(2, n, u);
+		int ans = qmi(2, t, p);
+		cout << ans << endl;
+	}else if(n >= u){
+		int t = qmi(2, n, 2 * u);
+		int ans = qmi(2, t, p);
+		cout << ans << endl;
+	}else{
+		int t = qmi(2, n, p);
+		int ans = qmi(2, t, p);
+		cout << ans << endl;
+	}
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -26,7 +53,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	cin >> T;
+	// cin >> T;
 	while(T -- ){
 		solve();
 	}
