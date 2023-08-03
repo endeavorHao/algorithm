@@ -35,7 +35,7 @@ void solve(){
 		int ans = qmi(2, t, p);
 		cout << ans << endl;
 	}else if(n >= u){
-		int t = qmi(2, n, 2 * u);
+		int t = qmi(2, n % u + u, p);
 		int ans = qmi(2, t, p);
 		cout << ans << endl;
 	}else{

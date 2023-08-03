@@ -13,6 +13,12 @@ void solve(){
     // dp[i][0] 表示前i个数能凑成末3为0的个数
     // dp[i][1] 表示前i个数能凑成末3为1的个数
     // dp[i][2] 表示前i个数能凑成末3为2的个数
+    // 状态转移方程
+    /*
+    dp[i][0] = (dp[i-1][0] + dp[i-1][0] * sum3 + dp[i-1][1] * sum2 + dp[i-1][2] * sum1) % mod;
+	dp[i][1] = (dp[i-1][1] + dp[i-1][1] * sum3 + dp[i-1][2] * sum2 + dp[i-1][0] * sum1) % mod;
+	dp[i][2] = (dp[i-1][2] + dp[i-1][2] * sum3 + dp[i-1][0] * sum2 + dp[i-1][1] * sum1) % mod;
+    */
 
 	// init
 	for(int i = 0; i <= 9; i ++ ) dp[i][0] = 1;

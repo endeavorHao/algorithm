@@ -24,7 +24,6 @@ void solve(){
 		if(check(mid)) r = mid;
 		else l = mid + 1;
 	}
-	if(check(1)) cout << " 1" << endl;  
 	cout << r << endl;
 }
 signed main() {

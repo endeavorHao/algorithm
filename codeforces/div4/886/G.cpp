@@ -3,42 +3,36 @@
 #define y second
 #define int long long
 using namespace std;
-const int N = 200010, INF = 0x3f3f3f3f, mod = 1e9 + 7;
+const int N = 200010, INF = 0x3f3f3f3f;
 typedef pair<int, int> PII;
 int n, m;
-int a[N], lcm[N];
-int f(int x){
-    int ans = 0;
-    for(int i = 2; i <= x / i; i ++ ){
-        if(x % i == 0){
-            while(x % i == 0){
-                ans ++;
-                x /= i;
-            }
-        }
-    }
-    if(x > 1) ans ++;
-    return ans;
-}
-int gcd(int a, int b){
-    return b ? gcd(b, a % b) : a;
-}
+int a[N];
 void solve(){
-	cin >> n;
-    for(int i = 1; i <= n; i ++ ) cin >> a[i];
-    for(int i = 1; i <= n; i ++ )
-        for(int j = i; j <= n; j ++ ){
-            
-        }
-    int ans = 0;
+    cin >> n;
+    map<int, int> mp1, mp2, mp3, mp4;
+    mp1.clear(), mp2.clear(), mp3.clear(), mp4.clear();
     for(int i = 1; i <= n; i ++ ){
-        int x = 0;
-        for(int j = i; j <= n; j ++ ){
-            int t = gcd(x, a[j]);
-            ans = (ans + f())
-        }
+      int x, y;
+      cin >> x >> y;
+      mp1[y - x] ++;
+      mp2[x + y] ++;
+      mp3[x] ++;
+      mp4[y] ++;
     }
-
+    int ans = 0;
+    for(auto u: mp1){
+      ans += u.y * (u.y - 1);
+    }
+    for(auto u: mp2){
+      ans += u.y * (u.y - 1);
+    }
+    for(auto u: mp3){
+      ans += u.y * (u.y - 1);
+    }
+    for(auto u: mp4){
+      ans += u.y * (u.y - 1);
+    }
+    cout << ans << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
@@ -49,7 +43,7 @@ signed main() {
 	cin.tie(0);
 	cout.tie(0);
 	int T = 1;
-	// cin >> T;
+	cin >> T;
 	while(T -- ){
 		solve();
 	}
