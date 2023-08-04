@@ -6,7 +6,9 @@ using namespace std;
 const int N = 200010, INF = 0x3f3f3f3f, mod = 1000000007;
 typedef pair<int, int> PII;
 void solve(){
-	
+	int n;
+	cin >> n;
+
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
