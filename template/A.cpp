@@ -8,7 +8,21 @@ typedef pair<int, int> PII;
 void solve(){
 	int n;
 	cin >> n;
-
+	string s;
+	cin >> s;
+	int cnt = 0;
+	while(s.size() > 1){
+		string t = "";
+		for(int i = 0; i < s.size() - 1; i ++ ){
+			int x = s[i + 1] - '0';
+			for(int j = 0; j < x; j ++ ) 
+				t += s[i];
+		}
+		s = t;
+		cout << t << endl;
+		cnt ++;
+	}
+	cout << cnt << endl;
 }
 signed main() {
 	#ifndef ONLINE_JUDGE
