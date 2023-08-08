@@ -109,7 +109,8 @@
         "regex": "cpp",
         "valarray": "cpp",
         "bitset": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "random": "cpp"
     },
     "editor.fontSize": 16,
     
