@@ -16,9 +16,9 @@ void solve(){
     while(q -- ){
         int x, y;
         cin >> x >> y;
-        double sqr = sqrt(x * x - 4 * y);
-        if(sqr - (int)sqr < 1e-6){
-            int v = (x + (int)sqr), u = (x - (int)sqr);
+        int sqr = sqrt(x * x - 4 * y);
+        if(sqr * sqr == x * x - 4 * y){
+            int v = (x + sqr), u = (x - sqr);
             int ans = 0;
             if(!(v & 1)){
                 v /= 2;
