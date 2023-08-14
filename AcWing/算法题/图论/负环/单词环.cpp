@@ -32,7 +32,7 @@ bool spfa(double mid){
             if(dist[j] < dist[t] + w[i] - mid){
                 dist[j] = dist[t] + w[i] - mid;
                 cnt[j] = cnt[t] + 1;
-                if( ++count >= 10000) return true;
+                if( ++count >= 5000) return true;
                 if(cnt[j] >= N) return true;
                 if(!st[j]){
                     q.push(j);

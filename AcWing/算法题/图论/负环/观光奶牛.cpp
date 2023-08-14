@@ -29,8 +29,9 @@ bool spfa(double mid){
 
         for(int i = h[t]; ~i; i = ne[i]){
             int j = e[i];
-            if(dist[j] > dist[t] - wf[t] + mid * wt[i]){
-                dist[j] = dist[t] - wf[t] + mid * wt[i];
+            // 这里是求是否存在正环
+            if(dist[j] < dist[t] + wf[t] - mid * wt[i]){
+                dist[j] = dist[t] + wf[t] - mid * wt[i];
                 cnt[j] = cnt[t] + 1;
                 if(cnt[j] >= n) return true;
                 if(!st[j]){

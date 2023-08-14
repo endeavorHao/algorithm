@@ -19,7 +19,7 @@ void solve(){
          
         return x >= m - y;
     };
-    int l = 0, r = 1e9;
+    int l = 0, r = 1e9 + 1;
     while(l < r){
         int mid = l + r >> 1;
         if(check(mid)) r = mid;

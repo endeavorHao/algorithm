@@ -10,7 +10,7 @@ void solve(){
     cin >> s;
     int n = s.size();
     s = " " + s;
-    vector<vector<int>> dp(n + 1, vector<int>(n));
+    vector<vector<int>> dp(n + 2, vector<int>(n + 2));
     dp[0][0] = 1;
     for(int i = 1; i <= n; i ++ ){
         for(int j = (i + 1) / 2; j <= i; j ++ ){
