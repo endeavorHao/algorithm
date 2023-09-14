@@ -18,7 +18,6 @@ void solve(){
         while(j < n && a[j] - a[i] < c) j ++;
         while(k < n && a[k] - a[i] <= c) k ++;
         if(a[j] - a[i] == c) ans += k - j;
-        cout << j << ' ' << k << endl;
     }
     cout << ans << endl;
 }
