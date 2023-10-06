@@ -10,16 +10,15 @@ typedef pair<int, int> PII;
 void solve(){
 	int n;
     cin >> n;
-    string s;
-    cin >> s;
-    int cnt = 0;
-    int ans = 0;
-    for(int i = 0; i < n; i ++ ){
-        if(s[i] == 'x') cnt ++;
-        else cnt = 0;
-        if(cnt >= 3) ans ++;
+    vector<int> a(n);
+    for(int i = 0; i < n; i ++ ) cin >> a[i];
+    sort(all(a));
+    if(a[0] == 0){
+        for(int i = a.size() - 1; i >= 0; i -- ) cout << a[i];
+        cout << endl;
+    }else{
+        cout << -1 << endl;
     }
-    cout << ans << endl;
 }
 signed main() {
 	ios::sync_with_stdio(false);
