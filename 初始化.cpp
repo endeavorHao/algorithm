@@ -21,3 +21,6 @@ signed main() {
 	}
 	return 0;
 }
+
+
+__main

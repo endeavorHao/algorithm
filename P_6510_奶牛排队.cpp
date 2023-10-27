@@ -16,6 +16,8 @@ void solve(){
     vector<int> a(n + 1);
 	for(int i = 1; i <= n; i ++ ) cin >> a[i];
     vector<int> pre(n + 1), suf(n + 1);
+    // pre[i]存的是i之前第一个大于等于a[i]
+    // suf[i]存的是i之后第一个小于等于a[i]
 	stack<int> stk;
 	for(int i = 1; i <= n; i ++ ) {
 		while(stk.size() && a[i] > a[stk.top()]) stk.pop();
@@ -23,13 +25,13 @@ void solve(){
 		else pre[i] = 0;
 		stk.push(i);
 	}
-	while(stk.size()) stk.pop();
-	for(int i = n; i; i -- ) {
-		while(stk.size() && a[i] < a[stk.top()]) stk.pop();
-		if(stk.size()) suf[i] = stk.top();
-		else suf[i] = n + 1;
-		stk.push(i);
-	}
+	// while(stk.size()) stk.pop();
+	// for(int i = n; i; i -- ) {
+	// 	while(stk.size() && a[i] < a[stk.top()]) stk.pop();
+	// 	if(stk.size()) suf[i] = stk.top();
+	// 	else suf[i] = n + 1;
+	// 	stk.push(i);
+	// }
 	vector<vector<int>> st(n + 10, vector<int>(20)); 
 	// init
 	for(int i = 1; i <= n; i ++ ) {

@@ -1,3 +1,8 @@
+/*
+    r太大试着用sqrt（r）的大小来找到l ~ r这一段
+    l ~ r 中的质数个数为 (r - l + 1) / ln(r - l + 1)
+    因此只枚举质数能可以降低ln（n）的时间复杂度 
+*/
 #include <bits/stdc++.h>
 #define x first
 #define y second

@@ -11,6 +11,7 @@ void solve(){
 	int n, m;
     cin >> n >> m;
     set<int> s;
+    s.insert(n);
     auto dfs = [&](auto self, int x){
         if(x % 3) {
             s.insert(x);

@@ -30,7 +30,7 @@ void dfs(int u, int last, int p, int s) {
 void solve(){
 	cin >> n;
 	dfs(0, 30, 1, 1);
-	cout << number << " " << maxv << endl;
+	cout << number << endl;
 }
 signed main() {
 	ios::sync_with_stdio(false);

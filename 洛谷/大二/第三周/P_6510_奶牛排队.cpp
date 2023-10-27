@@ -32,7 +32,11 @@ void solve(){
 	}
 	int ans = 0;
 	for(int i = n; i; i -- ) {
-		ans = max(ans, suf[i] - pre[i] + 1);
+		for(int j = pre[i]; j < i; j ++ ) {
+			if(suf[j] > i) {
+				ans = max(ans, i - j + 1);
+			}
+		}
 	}
 	cout << ans << endl;
 }

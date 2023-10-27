@@ -1,7 +1,9 @@
 /*
-    gcd(x, y) = p
-    因此gcd(x / p, y /p) = 1
-    因此问所有n/p的互质数和
+    暴力的做法就是求出所有d的约数然后一一判断
+    因为int范围内最多约数个数为1600因此时间复杂度允许
+    如果暴力求d的约数时间复杂度为T*sqrt(d) = 2000 * sqrt(2e9)因此会超时
+    所以我们需要先预处理所有质数
+    这样时间复杂度降为T*sqrt(d)/log(d)
 */
 #include <bits/stdc++.h>
 #define x first
@@ -34,7 +36,7 @@ void init(int n) {
 }
 
 void dfs(int u, int p) {
-    if(u > cntf) {
+    if(u == cntf) {
         divider[cntd ++] = p;
         return;
     }

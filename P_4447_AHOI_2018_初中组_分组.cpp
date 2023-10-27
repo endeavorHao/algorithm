@@ -13,6 +13,9 @@ const double expr = 1e-5;
 typedef pair<int, int> PII;
 
 int b[N], a[N];
+struct node{
+    int num, v;
+}c[N];
 int lowbit(int x) {
     return x & -x;
 }
@@ -28,6 +31,15 @@ void solve(){
 	int n;
     cin >> n;
     for(int i = 1; i <= n; i ++ ) cin >> a[i];
+    sort(a + 1, a + n + 1);
+    int cnt = 0;
+    for(int i = 1; i <= n; i ++ ) {
+        if(a[i] == a[i - 1]) {
+            c[cnt].v ++;
+        }else{
+            c[ ++ cnt].num = a[i];
+        }
+    }
 
 }
 signed main() {

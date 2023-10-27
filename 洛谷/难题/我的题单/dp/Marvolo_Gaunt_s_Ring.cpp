@@ -15,7 +15,7 @@ typedef pair<PII, int> PIII;
 void solve(){
     int n, p, q, r;
     cin >> n >> p >> q >> r;
-    vector<int> a(n);
+    vector<int> a(n + 1);
     for(int i = 1; i <= n; i ++ ) cin >> a[i];
     vector<array<int, 3>> dp(n + 1);
     dp[1][0] = a[1] * p;

@@ -17,7 +17,7 @@ void solve(){
         while(j * 3 % (a[i - 1] + a[i - 2]) == 0) j ++;
         a[i] = j;
     }
-    for(int i = 0; i < n; i ++ ) cout << a[i] << " \n"[i == n -1];
+    for(int i = 0; i < n; i ++ ) cout << a[i] << " \n"[i == n - 1];
 }
 signed main() {
 	ios::sync_with_stdio(false);
