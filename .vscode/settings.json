@@ -111,7 +111,8 @@
         "bitset": "cpp",
         "complex": "cpp",
         "random": "cpp",
-        "numbers": "cpp"
+        "numbers": "cpp",
+        "numeric": "cpp"
     },
     "editor.fontSize": 16,
     
