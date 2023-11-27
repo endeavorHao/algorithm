@@ -144,5 +144,6 @@
         "variant": "cpp"
     },
     "editor.fontSize": 16,
+    "editor.inlineSuggest.showToolbar": "onHover",
     
 }
